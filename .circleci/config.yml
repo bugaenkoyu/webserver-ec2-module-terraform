@@ -16,11 +16,11 @@ jobs:
     steps:
       - checkout
       - run: wget https://releases.hashicorp.com/terraform/1.8.3/terraform_1.8.3_linux_amd64.zip
-      - run: sudo unzip terraform_1.8.3_linux_amd64.zip -d /usr/local/bin
+      - run: unzip terraform_1.8.3_linux_amd64.zip -d /usr/local/bin
       - run: wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.58.7/terragrunt_linux_amd64
       - run: cp terragrunt_linux_amd64 terragrunt
       - run: chmod u+x terragrunt
-      - run: sudo mv terragrunt /usr/local/bin/terragrunt
+      - run: mv terragrunt /usr/local/bin/terragrunt
       - run: go test -v ./terratests
 
 workflows:
