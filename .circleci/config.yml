@@ -15,16 +15,12 @@ jobs:
       - image: golang:1.17
     steps:
       - checkout
-      - run: |
-          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-          sudo apt-get update && sudo apt-get install terraform
-
-      # Install Terragrunt
-      - run: |
-          curl -LJO https://github.com/gruntwork-io/terragrunt/releases/download/v0.58.7/terragrunt_linux_amd64
-          chmod +x terragrunt_linux_amd64
-          sudo mv terragrunt_linux_amd64 /usr/local/bin/terragrunt
+      - run: wget https://releases.hashicorp.com/terraform/1.8.3/terraform_1.8.3_linux_amd64.zip
+      - run: sudo unzip terraform_1.8.3_linux_amd64.zip -d /usr/local/bin
+      - run: wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.58.7/terragrunt_linux_amd64
+      - run: cp terragrunt_linux_amd64 terragrunt
+      - run: chmod u+x terragrunt
+      - run: sudo mv terragrunt /usr/local/bin/terragrunt
       - run: go test -v ./terratests
 
 workflows:
