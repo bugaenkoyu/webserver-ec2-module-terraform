@@ -22,7 +22,9 @@ jobs:
       - run: cp terragrunt_linux_amd64 terragrunt
       - run: chmod u+x terragrunt
       - run: mv terragrunt /usr/local/bin/terragrunt
-      - run: go test -v ./terratests
+      - run: go mod init mymodule
+      - run: go mod download
+      - run: go test -v ./terratests/test
 
 workflows:
   test:
