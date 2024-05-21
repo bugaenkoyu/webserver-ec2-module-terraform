@@ -29,7 +29,7 @@ jobs:
             go get github.com/gruntwork-io/terratest/modules/aws
             go get github.com/gruntwork-io/terratest/modules/terraform
             go get github.com/stretchr/testify/assert
-            go mod tidy
+            go mod tidy -compat=1.17
       - run: go test -v ./terratests/test
 
 workflows:
