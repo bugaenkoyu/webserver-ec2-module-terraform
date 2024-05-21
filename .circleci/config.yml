@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Run tfsec tests
-          command: tfsec ./infrastructure -exclude aws-ec2-require-vpc-flow-logs-for-all-vpcs --exclude aws-ec2-enable-at-rest-encryption --exclude aws-ec2-enforce-http-token-imds --exclude aws-ec2-no-public-egress-sgr --exclude aws-ec2-no-public-ingress-sgr --exclude aws-ec2-add-description-to-security-group-rule
+          command: tfsec ./infrastructure -exclude "aws-ec2-require-vpc-flow-logs-for-all-vpcs,aws-ec2-enable-at-rest-encryption,aws-ec2-enforce-http-token-imds,aws-ec2-no-public-egress-sgr,aws-ec2-no-public-ingress-sgr,aws-ec2-add-description-to-security-group-rule"
 
   terratest:
     docker:
