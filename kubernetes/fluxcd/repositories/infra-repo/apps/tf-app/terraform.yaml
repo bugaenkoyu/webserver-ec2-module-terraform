@@ -1,0 +1,18 @@
+apiVersion: infra.contrib.fluxcd.io/v1alpha1
+kind: Terraform
+metadata:
+  name: tf-app
+  namespace: flux-system
+spec:
+  interval: 1m
+  approvePlan: "auto"
+  path: ./infrastructure
+  sourceRef:
+    kind: GitRepository
+    name: tf-app
+    namespace: flux-system
+  runnerPodTemplate:
+    spec:
+      envFrom:
+        - secretRef:
+            name: aws-credentials
